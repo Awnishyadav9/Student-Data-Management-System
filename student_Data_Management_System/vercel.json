@@ -1,0 +1,25 @@
+{
+    "'version":2,
+    "builds":[
+        {
+            "src":"student_Data_Management_System/wsgi.py",
+            "use":"@vercel/python",
+            "config":{"maxLambdaSize":"15mb","runtime":"python3.9"}
+        },
+        {
+            "src":"build_files.sh",
+            "use":"@vercel/static_build",
+            "config":{"distDir":"Staticfiles_build"}
+        }
+    ],
+    "routes":[
+        {
+            "src":"/static/(.*)",
+            "dist":"/static/$1"
+        },
+        {
+            "src":"/(.*)",
+            "dist":"student_Data_Management_System/wsgi.py"
+        }
+    ]
+}

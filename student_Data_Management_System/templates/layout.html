@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Student :
+        {% block title %}
+            Layout
+        {% endblock title %}   
+    </title>
+     
+    
+    {% block link %}
+        
+    {% endblock link %}
+        
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class='bg-slate-800'>
+    <nav class="w-full bg-slate-700">
+        <div class="flex items-center justify-between py-4 px-4 md:px-9">
+          <!-- Logo and Navigation Links -->
+          <div class="flex items-center">
+            <ul class=" flex md:flex text-orange-600 items-center space-x-6 ml-4">
+              <li><a href="{% url 'Show_data' %}" class="text-2xl md:text-4xl font-bold hover:text-orange-800">Data</a></li>
+              <li><a href="{% url 'Show_data' %}" class="text-base md:text-xl font-medium hover:text-orange-800">View Data</a></li>
+              <li><a href="{% url 'Add_data' %}" class="text-base md:text-xl font-medium hover:text-orange-800">Add Data</a></li>
+            </ul>
+          </div>
+      
+          <!-- Authentication Links -->
+          <div>
+            {% if user.is_authenticated %}
+            <ul class="flex text-orange-600 items-center space-x-4">
+              <li>
+                <a href="{% url 'Logout' %}" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-500 hover:bg-orange-800 focus:outline-none focus:ring-2">
+                  Logout
+                </a>
+              </li>
+            </ul>
+            {% else %}
+            <ul class="flex text-orange-600 items-center space-x-4">
+              <li>
+                <a href="{% url 'Login' %}" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gray-500 hover:bg-gray-900 focus:outline-none focus:ring-2">
+                  Login
+                </a>
+              </li>
+              <li>
+                <a href="{% url 'Register' %}" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2">
+                  Register
+                </a>
+              </li>
+            </ul>
+            {% endif %}
+          </div>
+        </div>
+      
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-slate-700">
+          <ul class="flex flex-col text-orange-600 space-y-4 py-4 px-4">
+            <li><a href="{% url 'Show_data' %}" class="text-xl font-bold hover:text-orange-800">Data</a></li>
+            <li><a href="{% url 'Show_data' %}" class="text-base font-medium hover:text-orange-800">View Data</a></li>
+            <li><a href="{% url 'Add_data' %}" class="text-base font-medium hover:text-orange-800">Add Data</a></li>
+            {% if not user.is_authenticated %}
+            <li><a href="{% url 'Login' %}" class="text-base font-medium hover:text-orange-800">Login</a></li>
+            <li><a href="{% url 'Register' %}" class="text-base font-medium hover:text-orange-800">Register</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+      
+
+    <div>
+        {% block content %}
+    <h1 class='text-center text-3xl font-bold p-5 text-orange-600'>Student Data Management System</h1>
+    {% endblock content %} 
+    </div> 
+</body>
+</html>
