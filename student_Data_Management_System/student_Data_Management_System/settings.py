@@ -18,7 +18,7 @@ SECRET_KEY = 'django-insecure-t3r61as1odbj7*&tr%sq)ntazl37wur@adhdhf(sc7y!w$l@$9
 DEBUG = True
 
 # ALLOWED_HOSTS = ['.vercel.app','.now.sh']
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 
@@ -112,12 +112,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'),]
-STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles_build",'static')
 
 
 LOGIN_URL = '/accounts/login/'
-# LOGIN_REDIRECT_URL ='/login/'
-# LOGOUT_REDIRECT_URL='/login/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
